@@ -1,12 +1,7 @@
 
 import kotlin.random.Random
-import kotlin.random.nextInt
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-
-//functions
-
+//function that just takes a String and will remove any \n and then split all the words into a list based on whitespace.
 fun build_word_list(source_text: String) = source_text.replace("\n", " ").split("\\s+".toRegex())
 
 //build a map for words that come after a specific word
@@ -22,14 +17,8 @@ fun build_next_words(word_list: List<String>):  MutableMap<String, MutableList<S
     for (word in unique_words){
         wordmap.put(word, mutableListOf<String>())
     }
-
-
-
-
-
     //Manually input the first word in our word_list into the blank key.
     wordmap.getOrPut("", ::mutableListOf).add(word_list[0])
-
 
     //fill the values for the key
     for (index in 0..word_list.count()-2){
@@ -42,7 +31,6 @@ fun build_next_words(word_list: List<String>):  MutableMap<String, MutableList<S
             word_list[index].contains("?")
 
         ) {
-
             /**To successfully update a mutable list nested in a mutable map, you need to first use the getOrPut
              * function to access/call the value based on the key, and then use the add method from the mutable list
              * class. If you don't do this and directly try to just use the map's key and do wordmap[key].add() you will
@@ -56,7 +44,6 @@ fun build_next_words(word_list: List<String>):  MutableMap<String, MutableList<S
         } else{
             //All other words that come after a keyword are appended to their respective keys
             wordmap.getOrPut(word_list[index], ::mutableListOf).add(word_list[index+1])
-
 
         }
     }
@@ -73,6 +60,7 @@ fun generate_sentence(next_words: MutableMap<String, MutableList<String>> ): Str
     var new_sentence = mutableListOf<String>()
     var key = ""
     var choice_range = next_words.getOrPut(key, ::mutableListOf)
+
     while (choice_range.count() != 0){
         new_sentence.add(choice_range[Random.nextInt(choice_range.count())])
         key = new_sentence[new_sentence.count()-1]
@@ -81,38 +69,21 @@ fun generate_sentence(next_words: MutableMap<String, MutableList<String>> ): Str
     return new_sentence.joinToString(separator=" ")
 }
 
-
-
 fun generate_text(words: String, num_sentences: Int): String {
     /*Generates random Markov text. Generates total number of sentences based on num_sentences
     parameter */
     var next_words = build_next_words(build_word_list(words))
-
-
     val text = mutableListOf<String>()
-
     for (num in 0..num_sentences-1) {
         text.add(generate_sentence(next_words))
     }
-
     return text.joinToString(separator=" ")
-
-
-
 }
 
-
 fun main() {
-    var list = "hello world one world fullstop. whatzzap."
-    var gah = generate_text(list, 2)
-    println(gah)
 
-    val words = mutableListOf("I am Sam.\n\nI am Sam.\nSam I am.", "Hippopotomonstrosesquipedaliophobia.")
-
-
-    val map1 = build_next_words(build_word_list(words[0]))
-    val map2 =  mapOf("" to listOf("I", "I", "Sam") ,"I" to listOf("am", "am", "am."), "am" to listOf("Sam.", "Sam."), "Sam." to listOf(""),"Sam" to listOf("I"), "am." to listOf(""))
-    println(map1)
-    println(map2)
-    println(map1.equals(map2))
+    //Sample Markov Text Generator
+    var list = "Lorem Ipsum. The sky is blue. Let's all Lorem Ipsum. Are you hungry? Fun fun times. This is fun."
+    var randomSentence = generate_text(list, 2)
+    println(randomSentence)
 }

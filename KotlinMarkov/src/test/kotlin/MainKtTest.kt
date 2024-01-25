@@ -1,9 +1,10 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-
+//Unit Test Cases taken from Software Design's unit test cases. This just checks to see if the word maps were correctly generated since there's no way to test the sentence generation since it's random.
 class MainKtTest{
 
+    //All the unit test words
     val words = mutableListOf(
         "I am Sam.\n\nI am Sam.\nSam I am.",
         "Hippopotomonstrosesquipedaliophobia.",
