@@ -50,7 +50,11 @@ class Stack<T> {
      * @return True if stack is empty/null and false otherwise
      */
     fun isEmpty(): Boolean {
-        return top == null
+        try {
+            return top == null
+        } catch (e: Exception) {
+            TODO("Not yet implemented")
+        }
     }
 
 }
