@@ -264,6 +264,36 @@ class doubleQueue<T> : Queue<T> {
 
 fun main() {
 
+    //Stack-Queue Problem P3
+
+    var rStack:  doubleStack<String> = doubleStack()
+    //Actual order of stack is: (top)  4 3 2 1 (bottom)
+    rStack.push("one")
+    rStack.push("two")
+    rStack.push("three")
+    rStack.push("four")
+
+    val newStack: doubleStack<String> = doubleStack()
+
+    //Method 1 (Least efficient & O(n)
+    while (!rStack.isEmpty()){
+        rStack.peek()?.let { newStack.push(it) }
+        rStack.pop()
+    }
+    rStack = newStack
+
+
+    println(rStack.peek())
+    newStack.pop()
+    println(rStack.peek())
+    newStack.pop()
+    println(rStack.peek())
+    newStack.pop()
+    println(rStack.peek())
+
+
+
+
 
 
 }
