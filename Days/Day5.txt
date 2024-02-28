@@ -1,0 +1,13 @@
+# Day 5 DSA
+
+Array: Collection, ordered, fixed size
+
+Accessing an Element in an array: Theta(1)
+Overwriting an Element: Theta(1)
+Appending to end: 
+		1. Copy list to larger memory 
+		2. Copt list to larger memory but make sure the extra buffer memory is large/double.
+
+A graph encodes relationships(vertices) between a set of entities(nodes)
+
+

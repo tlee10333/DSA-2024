@@ -1,0 +1,29 @@
+# Graphs
+
+
+Nodes (entities)  & Edges (the relationship)
+
+Adjacency List
+
+
+
+
+General format for different searches
+
+1. Visiting: A list of all nodes visited
+2. PriorityList: A Stack(DFS) or Queue(BFS) which outlines who we're going to visit (in the order)
+
+
+BFS: Pop the node that you're currently at, and then explore all current adjacent nodes and record where they lead. And then traverse.
+DFS: Pop the node you're currently at, and then explore the current adjacent nodes, but focus on one neighbor and traverse in depth
+
+
+Problem 1:
+	toVisit keeps track of all the nodes that have been visited as well as potentially visit-able. 
+Problem 2:
+	In Github
+
+
+I took Discrete last semester so graph theory isn't that confusing for me just yet, but sometimes I feel like the class time is slightly scattered in structure. I really love how well organized the website is and the problems there, but I feel like it's more useful as a HW or a pre-class reading, especially since we never fully cover everything in the pages. Overall, I'm excited to implement DSA in Kotlin though the various types and different functions available can be a bit confusing.
+
+

@@ -1,0 +1,38 @@
+# Searching Algorithms
+
+All searching algorithms are Big Theta(nlogn) or slower.
+ 
+
+Master Theorem: A generalized recursion equation for the cost of how long it takes to do a searching algorithm
+
+T(n) = a T(n/b) + f(n)
+
+Where: 
+
+- T(n): Cost of the search algorithm
+- n: the number of elements
+- a: Some constant, number of subproblems in the recursion
+- b: Some constant, amount we divide the subproblems by
+- n/b: size of each subproblem. All subproblems are assumed 
+
+## Case 1
+
+BigTheta(n^(log b a)) if log b a > 1
+
+
+## Case 2
+
+BigTheta(n log^(k+1)n) if n^(log b a)log^k n = bigTheta(n)
+
+
+	if a & b are both 2, 
+	
+	n log^(k+1)n) if n^(1)log^k n = bigTheta(n)
+			 n * (logn)^k = bigTehta(n)
+			
+			k = 0 must happen to satisfy the equation above. Hence,
+
+	n log^(0+1)n  = n logn
+
+
+ 

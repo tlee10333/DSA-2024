@@ -1,0 +1,63 @@
+# Brute forcing
+
+
+Start at index[0]
+
+add them all up, but only keep if the combination is bigger than the previous version
+
+
+and then move it indxe[1] and then do the same
+
+
+Time Complexity: O(n^2)
+
+
+
+
+
+## Better Algorithm?
+
+1. Divide List in Half
+
+	 -20 22 33 1| 5 -10 100 -5
+2. Find the Max subsequence in the left & right sides
+	[200~  -20 22 33 1|  5 -10 100 -5
+
+	22 33 1               100
+
+if  max_l + max_r + middle < max(max_l, max_r):
+	return max(max_l, max_r)
+else:
+
+3. Now we want to check that there isn't a max subsequence that connects these two subsequences together
+
+3.5 Find the subsequence from the  end of max_l to start of max_r
+
+
+
+-20 22 33 1| 5 -10 |100 -5
+
+4. Find the sum of this new subsequence
+
+5. if max_ + max_r + middle > max_l && max_r:
+	return max_l + middle _ max_r
+
+if not:
+	find the max subsequence from the middle
+		Try connecting it to max_l and max_r
+		Compare again
+		
+	if it doesn't work, 
+		choose between max_middle, max_l, and max_r 
+
+# Dynamic Programming
+
+Memoization: basically cache your previous solutions so you don't have to go back and recalculate it again
+
+
+
+# Minimum Cost of stair climbing
+
+
+I think I get the whole sorting and divide & conque, but I feel like it's very superficial.
+

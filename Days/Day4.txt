@@ -1,0 +1,35 @@
+# Single & Double Linked Lists
+
+
+# Single
+
+Each element is in it's own memory but each memory index also has the memory address of the next element in the list. 
+
+Stack (LIFO: Last In First Out) 
+- push: Push new data to the top of the stack
+- pop: Pop off/remove the top data from the stack
+- peek: Peek at the top data in the stack
+- isEmpty: Check if stack is empty
+
+FIFO: First in First Out also exists (We say queue instead of stack)
+
+How to built the stack in Kotlin?
+
+Classes:
+	- Stack class <T>
+		1. var top StackNode<T>?: pointing to top element in the stack  (If this was FIFO than it would be bottom instead)
+		2. fun <T>? push() {add the new thing. }
+		3. fun <T>? peek() {use top?.data which will will return Null if empty and top if there is something}
+		4. fun <T>? pop(){ if top?.next will allow us to keep on calling pop without causing errors}
+		5. fun Boolean isEmpty(){ = return top == Null}
+	-StackNode class <T>
+		1. var Data <T> (generic type T)
+		2. var next StackNode<T>?    (We want it to be nullable since the last/bottom node should be null)
+	
+## Double Linked list
+
+Queue = FIFO
+Node:
+	- Data
+	- Next (next stackNode)
+	- Previous (previous stackNode)

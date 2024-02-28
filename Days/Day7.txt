@@ -1,0 +1,14 @@
+
+# DAGs
+
+Directed Acyclic Graphs (DAGs): A directed graph without any cycles (so you can't go back to any node through the vertices).
+
+Kahn's algorithm: An algorithm which determines if a graph is cyclic or not. It solves it via topological sorting of our vertices
+
+if edge E_i exists before E_j, then E_i must be smaller than E_j
+
+Aka, all the edges must point to the right/one direction. 
+
+
+1. Choose a node to start that has no incoming edges
+2. 

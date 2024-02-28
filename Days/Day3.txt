@@ -1,0 +1,28 @@
+# Day 3 
+
+
+## Time Complexity of Various Array Operations
+
+Arrays: Continuous Blocks of memory (Basic list)
+
+1. O(1)?
+2. O(n)
+3. O(n^2) 
+	Cost of Operations: (think of this as the total number of actions we need to do when copying & adding a new list)
+		M + (M+1) + (M+1+1) + (M+1+1+1).... (M+n) 
+		1+ 2 + 3 + 4 + ..... + n
+		Arithmetic Series: n(1+n)/2 =( n^2 + n)/2 = O(n^2)
+4. O(n)
+	Cost of Operations
+		(1 + 2 + 4 +......+ n) + n
+		Cost of expansion & copying which occurs logarithmically) + cost of adding 1 element
+
+		We need to figure out the Big O value for the 1+2 +4....n
+		Geometric Series (multiplication of factor 2): 1(1-n)/(1-2) = 1-n/-1 = n-1 = O(n) 
+		SO: O(n) + O(n) = O(n)
+## Linked Lists
+
+Linked Lists: Each index has it's own block of memory (because it's quirky like that). To keep track of the order of elements, there is a pointer address in each index memory block that points to the next & before element.
+
+
+Still slightly confused about the whole Big O/Theta thing. I feel like Day 2 didn't prepare me enough for some/most of the questions today. I did really enjoy the same class setting and Paul explaining everything to me while also working on a table. I really do like the groupwork format, but I'm slightly worried that I won't be proactive enough and I'll just end up working with the same people throughout the semester. Honestly though, I think once everything was explained I got everything pretty easily.  

@@ -1,0 +1,16 @@
+# Types of algorithms
+
+Any algorithm that sorts by comparing elements of a list:
+		runtime: n log n
+
+
+One example that doesn't do this is: Radix Sort
+
+Use a binary tree to visualize why
+
+
+# Master Theorem
+
+T(n) = T(n/b) + f(n)
+
+
