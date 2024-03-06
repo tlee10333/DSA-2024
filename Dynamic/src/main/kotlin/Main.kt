@@ -8,14 +8,14 @@ class Matrix(n: Int) {
     internal var size = n
 
     //Public variables
-    var matrix: Array<Array<Int>> =  Array(size) { kotlin.Array<kotlin.Int>(size) { 0 } }
+    var matrix: Array<Array<Int?>> =  Array(size) { kotlin.Array<kotlin.Int?>(size) { null } }
 
     fun add(other: Matrix): Matrix {
         val tempMatrix = Matrix(matrix.size)
 
         for (i in 0 until tempMatrix.size) {
             for (j in 0 until tempMatrix.size) {
-                tempMatrix.matrix[i][j] = matrix[i][j] + other.matrix[i][j]
+                tempMatrix.matrix[i][j] = matrix[i][j]?.plus(other.matrix[i][j]!!)
             }
         }
 
@@ -27,7 +27,7 @@ class Matrix(n: Int) {
 
         for (i in 0 until tempMatrix.size) {
             for (j in 0 until tempMatrix.size) {
-                tempMatrix.matrix[i][j] = matrix[i][j] - other.matrix[i][j]
+                tempMatrix.matrix[i][j] = matrix[i][j]?.minus(other.matrix[i][j]!!)
             }
         }
 
@@ -53,7 +53,7 @@ class Matrix(n: Int) {
         for (i in 0 until row1) {
             for (j in 0 until col2) {
                 for (k in 0 until col1) {
-                    product.matrix[i][j] += matrix[i][k] * matrix2[k][j]
+                    product.matrix[i][j] = matrix[i][k]?.times(matrix2[k][j]!!)?.let { product.matrix[i][j]?.plus(it) }
                 }
             }
         }
@@ -77,7 +77,7 @@ class Matrix(n: Int) {
         //Base Case 1x1 works
         if (matrix.size == 1 && other.matrix.size == 1){
             val tempMatrix = Matrix(1)
-            tempMatrix.matrix[0][0]= matrix[0][0] * other.matrix[0][0]
+            tempMatrix.matrix[0][0]= matrix[0][0]?.times(other.matrix[0][0]!!)
             return tempMatrix
 
         }

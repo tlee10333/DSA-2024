@@ -14,7 +14,7 @@ inline fun<T> measureTimeMillisPair(function: () -> T): Pair<T, Long> {
 
 
 fun main(){
-    val sizeList = listOf(4,
+    val sizeList = listOf(
         1, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192)
         println("Strassen Algo")
 
@@ -45,6 +45,39 @@ fun main(){
             println(time)
 
         }
+
+
+    //RESULTS
+//
+//    Strassen Algo
+//    0
+//    0
+//    1
+//    3
+//    10
+//    30
+//    168
+//    693
+//    4569
+//    11920
+//    85355
+//    607279
+//    4341998
+
+//    Brute Force
+//    0
+//    0
+//    0
+//    0
+//    0
+//    1
+//    9
+//    225
+//    787
+//    11556
+//    165898
+//    1618215
+//    15040321
 
 
 
