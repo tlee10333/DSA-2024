@@ -4,6 +4,16 @@ import kotlin.random.Random
 import kotlin.system.measureTimeMillis
 
 
+/**
+ * Implements bubble sort algorithm
+ *
+ * How it works:
+ *  Loops through the list from 0 to end, compare i & i+1, and switch them if i > i+1
+ *  Once we loop through the list once and do not switch any values, we can stop. Very brute forcing.
+ *  Best: O(n), Worst O(n^2)
+ *  @param unsortedList is an unsorted list of numbers
+ *  @return A sorted version of the unsortedList input
+ */
 fun bubbleSort(unsortedList: MutableList<Int> ): MutableList<Int> {
     var unsorted = unsortedList.toMutableList()
     var inOrder = false
@@ -23,6 +33,19 @@ fun bubbleSort(unsortedList: MutableList<Int> ): MutableList<Int> {
 return unsorted
 }
 
+
+/**
+ * Implements mergeSort algorithm (RECURSIVE)
+ *
+ * How it works:
+ *  Split list into half recursively, then sort the 2 elements.
+ *  As we put back 2 halves together, we basically start from the first index and then compare if the left list or the right list has a larger one.
+ *  Add the smaller element to the final list, increment/remove it from it's smaller list, and compare again.
+ *  Best: n logn, Worst n logn
+ *
+ *  @param unsorted is an unsorted list of numbers
+ *  @return A sorted version of the unsortedList input
+ */
 fun mergeSort(unsorted: List<Int>) : List<Int> {
     //Base Cases
     if (unsorted.size <= 1){
@@ -60,6 +83,17 @@ fun mergeSort(unsorted: List<Int>) : List<Int> {
 
 }
 
+/**
+ * Imelements selectionSort Algorithm
+ *
+ * How it works:
+ *  Loop thorugh the list, find the smallest value per loop, and put it in the front of the list. Do it again & again until you're done
+ *
+ *  Best: O(n^2), Worst: O(n^2)
+ *
+ *  @param unsortedList is the unsorted list we're given
+ *  @return a list which is the sorted version of unsortedList
+ */
 fun selectionSort(unsortedList: MutableList<Int>): List<Int> {
     var unsorted = unsortedList.toMutableList()
 
@@ -84,7 +118,18 @@ fun selectionSort(unsortedList: MutableList<Int>): List<Int> {
     return unsorted
 }
 
-
+/**
+ * Implements quickSort algorithm (RECURSIVE)
+ *
+ * How it works:
+ *  Choose pivot is the first element in the list
+ *  Go through the list and split it so that the left list is all values smaller than pivot, and right is all values larger than pivot
+ *  Put the pivot in the middle of these two lists, and then recursively do this again for the 2 halved lists on the left and right again (so choose another pivot and do it again)
+ *  Just put everything back together, no need to sort when merging.
+ * Best: O(nlogn), Worst: O(n^2)
+ *  @param unsortedList is an unsorted list of numbers
+ *  @return A sorted version of the unsortedList input
+ */
 fun quickSort(unsortedList: MutableList<Int>): List<Int>{
 
     //Base case
@@ -116,7 +161,13 @@ fun quickSort(unsortedList: MutableList<Int>): List<Int>{
 }
 
 
-
+//BENCHMARKING CODE
+/**
+ * Function to calculate the benchmark time for running code
+ *
+ * @param function is a function we're running
+ * @return is a pair, the first is whatever the function outputs as a result, and the second is the time it took to run everything
+ */
 inline fun<T> measureTimeMillisPair(function: () -> T): Pair<T, Long> {
     val startTime = System.currentTimeMillis()
     val result: T = function.invoke()
@@ -125,20 +176,8 @@ inline fun<T> measureTimeMillisPair(function: () -> T): Pair<T, Long> {
     return Pair(result, endTime - startTime)
 }
 
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 //fun main() {
-//    var unsorted = mutableListOf(37,99,2, 29, 10, 14 , 14, 89, 20, 1, 75,12,3,45,6,3,24567876,23454,12344,1,456,8,4,24,345,13)
-//     unsorted = mutableListOf(37,99,2, 29, 10, 14 , 14, 89, 20, 1, 75)
-//
-//
-//
-////    println(bubbleSort(unsorted))
-////    println(mergeSort(unsorted))
-////    println(selectionSort(unsorted))
-////    println(quickSort(unsorted))
-////
+
 //    val timeList = listOf(10,
 //        100,
 //        200,
@@ -161,10 +200,24 @@ inline fun<T> measureTimeMillisPair(function: () -> T): Pair<T, Long> {
 //
 //    for (time in timeList){
 //        var randomValues = List(time) { Random.nextInt(0, 1000000) }
-//
 //        val (x, time) =  measureTimeMillisPair{
+//           quickSort(randomValues.toMutableList())
+//        }
+//        println(time)
+//        var randomValues = List(time) { Random.nextInt(0, 1000000) }
+//        val (x, time) =  measureTimeMillisPair{
+//           mergeSort(randomValues.toMutableList())
+//        }
+//        println(time)
 //
-//            quickSort(randomValues.toMutableList())
+//        var randomValues = List(time) { Random.nextInt(0, 1000000) }
+//        val (x, time) =  measureTimeMillisPair{
+//           BubbleSort(randomValues.toMutableList())
+//        }
+//        println(time)
+//        var randomValues = List(time) { Random.nextInt(0, 1000000) }
+//        val (x, time) =  measureTimeMillisPair{
+//           selectionSort(randomValues.toMutableList())
 //        }
 //        println(time)
 //

@@ -11,7 +11,7 @@ class MainKtTest {
 
 
 
-
+    //Tests BubbleSort sorts correctly. This test list has repeating numbers and worst case unsorted placement
     @Test
     fun bubbleSort() {
         var solution = listOf(1, 2, 10, 14, 14, 20, 29, 37, 75, 89, 99)
@@ -19,6 +19,7 @@ class MainKtTest {
         assertEquals(solution, bubbleSort(unsorted))
     }
 
+    //Tests MergeSort sorts correctly. This test list has repeating numbers and worst case unsorted placement
     @Test
     fun mergeSort() {
         var solution = listOf(1, 2, 10, 14, 14, 20, 29, 37, 75, 89, 99)
@@ -26,7 +27,7 @@ class MainKtTest {
         assertEquals(solution, mergeSort(unsorted))
 
     }
-
+    //Tests selectionSort sorts correctly. This test list has repeating numbers and worst case unsorted placement
     @Test
     fun selectionSort() {
         var solution = listOf(1, 2, 10, 14, 14, 20, 29, 37, 75, 89, 99)
@@ -34,7 +35,7 @@ class MainKtTest {
         assertEquals(solution, selectionSort(unsorted))
 
     }
-
+    //Tests quickSort sorts correctly. This test list has repeating numbers and worst case unsorted placement
     @Test
     fun quickSort() {
         var solution = listOf(1, 2, 10, 14, 14, 20, 29, 37, 75, 89, 99)
