@@ -10,7 +10,7 @@ I implemented 4 search algorithms:
 Visualizations: [link](https://visualgo.net/en/sorting)
 
 
-I also conducted benchmarking and researched AlphaDev, an AI system to optimize sorting on assembly level
+I also conducted benchmarking and researched AlphaDev, an AI system to optimize sorting on assembly level. The benchmarking and ALphaDev deep dive are in a pdf in this directory called `Benchmarking Functions.pdf`. The Master Theorem screenshots are in the `of subproblems.pdf`
 
 
 
