@@ -107,26 +107,26 @@ class GraphTraversal<VertexType>(g: GraphDW<VertexType>) {
         val parents: MutableMap<VertexType, VertexType> = mutableMapOf()
         marked.add(start)
         priorityList.enqueue(start)
-        var total_capacity =0
         while (true) {
             // bail out if we don't have anymore values to check
             // Note: using the Elvis operator ensures next is non-nullable
             val next = priorityList.dequeue() ?: break
-            if (next == target && total_capacity > 0) {
+            if (next == target) {
                 return reconstructPath(parents, target)
             }
             graph.getEdges(next)?.forEach { neighbor ->
-                if (!marked.contains(neighbor.key) ) {
+                //Calculating the difference in flow and capacity of a node
+                var total_capacity = neighbor.value.second?.minus(neighbor.value.first!!)!!
+                //DO not add the edge if it has reached it's capacity
+                if (!marked.contains(neighbor.key)  && total_capacity > 0  ) {
                     parents[neighbor.key] = next
                     marked.add(neighbor.key)
                     priorityList.enqueue(neighbor.key)
-                    total_capacity = total_capacity + neighbor.value.second?.minus(neighbor.value.first!!)!!
                 }
             }
         }
         return null
     }
-
     /**
      * Search through a graph using a depth-first search
      * @param start the node to start the search
@@ -138,7 +138,6 @@ class GraphTraversal<VertexType>(g: GraphDW<VertexType>) {
         val marked: MutableSet<VertexType> = mutableSetOf()
         // we use parents to reconstruct the path back to [start]
         val parents: MutableMap<VertexType, VertexType> = mutableMapOf()
-        var total_capacity =0
 
         marked.add(start)
         priorityList.push(start)
@@ -150,7 +149,9 @@ class GraphTraversal<VertexType>(g: GraphDW<VertexType>) {
                 return reconstructPath(parents, target)
             }
             graph.getEdges(next)?.forEach { neighbor ->
-                total_capacity = neighbor.value.second?.minus(neighbor.value.first!!)!!
+                //Calculating the difference in flow and capacity of a node
+                var total_capacity = neighbor.value.second?.minus(neighbor.value.first!!)!!
+                //DO not add the edge if it has reached it's capacity
                 if (!marked.contains(neighbor.key) && total_capacity > 0 ) {
                     parents[neighbor.key] = next
                     marked.add(neighbor.key)
@@ -161,8 +162,6 @@ class GraphTraversal<VertexType>(g: GraphDW<VertexType>) {
         }
         return null
     }
-
-
 
     /**
      * Backtrack through the path to reconstruct the path

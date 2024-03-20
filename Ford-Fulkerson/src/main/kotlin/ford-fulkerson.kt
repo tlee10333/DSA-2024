@@ -2,9 +2,18 @@ package org.example
 import org.example.GraphDW
 
 
+/**
+ * A function that implements a Ford Fulkerson Algorithm given a sink and source and a graph
+ *
+ * @param graph is a GraphDW object that contains the graph data
+ * @param start is the source node in our graph
+ * @param end is the sink node in our graph
+ * @return Int value which is the max flow of a graph
+ */
 fun <VertexType> fordFulkerson(graph: GraphDW<VertexType>, start: VertexType, end: VertexType): Int{
     val g = GraphTraversal(graph)
     var max_flow =0
+    //Ford Fulkerson doesn't specify a specific path finding algorithm so I chose DFS
     var path = g.dfs(start, end)
     var flow_potential = mutableListOf<Int>()
 
@@ -32,9 +41,19 @@ fun <VertexType> fordFulkerson(graph: GraphDW<VertexType>, start: VertexType, en
     return max_flow
 }
 
+/**
+ * A function that implements the Edmond Karps Variant Algorithm given a sink and source and a graph. The only difference is that EK specifically uses BFS
+ *
+ * @param graph is a GraphDW object that contains the graph data
+ * @param start is the source node in our graph
+ * @param end is the sink node in our graph
+ * @return Int value which is the max flow of a graph
+ */
+ */
 fun <VertexType> edmondKarps(graph: GraphDW<VertexType>, start: VertexType, end: VertexType): Int{
     val g = GraphTraversal(graph)
     var max_flow =0
+    //HAS to use BFS
     var path = g.bfs(start, end)
     var flow_potential = mutableListOf<Int>()
     while (path!= null){
