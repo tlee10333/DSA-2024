@@ -1,6 +1,7 @@
 package org.example
 import org.example.GraphDW
 import org.example.GraphTraversal
+import org.example.fordFulkerson
 
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -15,22 +16,21 @@ fun main() {
     x.addVertices("c")
     x.addVertices("d")
     x.addVertices("e")
+    x.addVertices("f")
+
+    x.addEdge("a", "b", 10)
+    x.addEdge("b", "c", 25)
+    x.addEdge("c", "f", 10)
+    x.addEdge("a", "d", 10)
+    x.addEdge("d", "e", 15)
+    x.addEdge("e", "f", 10)
+    x.addEdge("e", "b", 6)
 
 
-    x.addEdge("a", "b", 5, 2)
-    x.addEdge("a", "c", 3, 4)
-    x.addEdge("b", "d", 5)
-    x.addEdge("c", "d", 1)
-    x.addEdge("d", "e", 2)
-    x. addEdge("b", "e", 2)
-    println(x.getEdges("a"))
-    println(x.getEdgeFlow("a" ,"c"))
-    x.setEdgeFlow("a", "c", 2)
-    println(x.getEdgeFlow("a" ,"c"))
-    println(x.getEdges("a"))
 
-    var s = GraphTraversal(x)
-    println(s.bfs("a", "e"))
-    println(s.dfs("a", "e"))
+    //Correct Answer is 20
+
+    val n = fordFulkerson(x, "a", "f")
+    println(n)
 
 }

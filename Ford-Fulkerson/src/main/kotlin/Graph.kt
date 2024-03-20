@@ -24,6 +24,9 @@ class GraphDW<VertexType>() {
      */
     fun addEdge(from: VertexType, to: VertexType, capacity: Int, flow: Int=0) {
         vertices[from]?.put(to, Pair( first = flow,  second =capacity))
+
+        //Residual graph edge
+        vertices[to]?.put(from, Pair( first = 0,  second =0))
     }
 
     /**
@@ -56,6 +59,9 @@ class GraphDW<VertexType>() {
 
     fun setEdgeFlow(from: VertexType, to: VertexType, flow: Int) {
             vertices[from]?.set(to, Pair( first = flow,  second = getEdgeCapacity(from, to)))
+        //Residual edge
+        vertices[to]?.set(from, Pair( first = -flow,  second = 0))
+
     }
 
     /**

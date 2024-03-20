@@ -112,18 +112,20 @@ class GraphTraversal<VertexType>(g: GraphDW<VertexType>) {
         val parents: MutableMap<VertexType, VertexType> = mutableMapOf()
         marked.add(start)
         priorityList.enqueue(start)
+        var total_capacity =0
         while (true) {
             // bail out if we don't have anymore values to check
             // Note: using the Elvis operator ensures next is non-nullable
             val next = priorityList.dequeue() ?: break
-            if (next == target) {
+            if (next == target && total_capacity > 0) {
                 return reconstructPath(parents, target)
             }
             graph.getEdges(next)?.forEach { neighbor ->
-                if (!marked.contains(neighbor.key)) {
+                if (!marked.contains(neighbor.key) ) {
                     parents[neighbor.key] = next
                     marked.add(neighbor.key)
                     priorityList.enqueue(neighbor.key)
+                    total_capacity = total_capacity + neighbor.value.second?.minus(neighbor.value.first!!)!!
                 }
             }
         }
@@ -141,20 +143,24 @@ class GraphTraversal<VertexType>(g: GraphDW<VertexType>) {
         val marked: MutableSet<VertexType> = mutableSetOf()
         // we use parents to reconstruct the path back to [start]
         val parents: MutableMap<VertexType, VertexType> = mutableMapOf()
+        var total_capacity =0
+
         marked.add(start)
         priorityList.push(start)
         while (true) {
             // bail out if we don't have anymore values to check
             // Note: using the Elvis operator ensures next is non-nullable
             val next = priorityList.pop() ?: break
-            if (next == target) {
+            if (next == target ) {
                 return reconstructPath(parents, target)
             }
             graph.getEdges(next)?.forEach { neighbor ->
-                if (!marked.contains(neighbor.key)) {
+                total_capacity = neighbor.value.second?.minus(neighbor.value.first!!)!!
+                if (!marked.contains(neighbor.key) && total_capacity > 0 ) {
                     parents[neighbor.key] = next
                     marked.add(neighbor.key)
                     priorityList.push(neighbor.key)
+
                 }
             }
         }
