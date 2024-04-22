@@ -20,7 +20,7 @@ In the `Markov.kt` file, which is where the Markov implmentation lives, there is
 
 
 
-```{
+```
 
 
 fun main() {
@@ -33,18 +33,18 @@ fun main() {
 
 
 
-}```
+```
 
 
 
 OUTPUT: 
 
 
-```{
+```
 
 I slumbered away in fun dreams. Music to my ears, but I'm also too hungry to care. I don't know what I'm doing, but Lorem Ipsum. I slumbered away in fun dreams.
 
-}```
+```
 
 
 Which is follows the code. Given the raw text, we generate 4 sentences which in general make sense and seem cohesive.
