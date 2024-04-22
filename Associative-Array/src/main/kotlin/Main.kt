@@ -26,10 +26,10 @@ class AssociativeArray<K, V> {
 
         //Seperate Chaining
         val bucketIndex = hashFunction(key)
-        val bucket = buckets[bucketIndex]
+        val arrayBucket = buckets[bucketIndex]
 
-        // Check if key already exists, if so, update the value
-        for (element in bucket) {
+        //  if key already exists, update  value
+        for (element in arrayBucket) {
             if (element.key == key) {
                 element.value = value
                 return
@@ -37,12 +37,23 @@ class AssociativeArray<K, V> {
         }
 
         // Add new key-value pair
-        bucket.add(KeyValuePair(key, value))
+        arrayBucket.add(KeyValuePair(key, value))
         size++
 
-        // Resize if load factor exceeds 0.75
-        if (size.toDouble() / capacity > 0.75) {
-            resize()
+        // Resize if size hits capacity
+        if (size == capacity) {
+            capacity *= 2
+            val newBuckets = Array<MutableList<KeyValuePair<K, V>>>(capacity) { mutableListOf() }
+
+            for (bucket in buckets) {
+                for (element in bucket) {
+                    //copy every single value to the new associative array
+                    val newIndex = hashFunction(element.key)
+                    newBuckets[newIndex].add(element)
+                }
+            }
+
+            buckets = newBuckets
         }
     }
     /**
@@ -114,43 +125,6 @@ class AssociativeArray<K, V> {
     }
 
 
-    /**
-     * Extra function for resizing the associative array when we've hit capacity. Called only when inserting new key & value and we don't have space.
-     *
-     *
-     */
-    private fun resize() {
-        capacity *= 2
-        val newBuckets = Array<MutableList<KeyValuePair<K, V>>>(capacity) { mutableListOf() }
 
-        for (bucket in buckets) {
-            for (element in bucket) {
-                val newIndex = hashFunction(element.key)
-                newBuckets[newIndex].add(element)
-            }
-        }
-
-        buckets = newBuckets
-    }
 }
 
-fun main() {
-    val myAssociativeArray = AssociativeArray<String, Int>()
-
-    myAssociativeArray.set("One", 1)
-    myAssociativeArray.set("Two", 2)
-    myAssociativeArray.set("Three", 3)
-    myAssociativeArray.set("Four", 4)
-    myAssociativeArray.set("Five", 5)
-
-    println("Keys: ${myAssociativeArray.keyValuePair()}")
-
-    println("Value for key 'Two': ${myAssociativeArray.get("Two")}")
-
-    println("Removing key 'Three'")
-    myAssociativeArray.remove("Three")
-
-    println("Is key 'Three' present? ${myAssociativeArray.contains("Three")}")
-
-    println("Size of array: ${myAssociativeArray.size()}")
-}
