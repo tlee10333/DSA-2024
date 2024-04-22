@@ -1,10 +1,11 @@
+package org.example
 
 //Class that is literally a pair holding a key and a value. Used in place of generic Pairs
 class KeyValuePair<K, V>(val key: K, var value: V)
 
 class AssociativeArray<K, V> {
 
-    private var capacity = 8 //max size of array
+    private var capacity = 32 //max size of array
     private var size = 0 //Actual size of array
     private var buckets = Array<MutableList<KeyValuePair<K, V>>>(capacity) { mutableListOf() }
 
@@ -15,7 +16,9 @@ class AssociativeArray<K, V> {
      * Currently only using Modulo
      */
     private fun hashFunction(key: K): Int {
-        return key.hashCode() % capacity
+        val mod = key.hashCode() % capacity
+        // If the result is negative, add the capacity to make it positive
+        return if (mod < 0) mod + capacity else mod
     }
 
     /**

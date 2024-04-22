@@ -7,7 +7,7 @@ import org.example.KeyValuePair
 
 class AssociativeArrayTest {
 
-    //Test that the KeyValuePair class can how a pair containing a key and a value
+    //Test that the KeyValuePair class can have a pair containing a key and a value
     @Test
     fun KeyValuePair(){
 
