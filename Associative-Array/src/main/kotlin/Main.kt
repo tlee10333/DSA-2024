@@ -13,7 +13,10 @@ class AssociativeArray<K, V> {
     /**
      * Hash Function
      *
-     * Currently only using Modulo
+     * Currently only using Modulo and always returns a positive hash value
+     *
+     * @param key any value that is the key for our associative array
+     * @return an integer that is the hash value and the array bucket index in our associative array
      */
     private fun hashFunction(key: K): Int {
         val mod = key.hashCode() % capacity
