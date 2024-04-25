@@ -11,6 +11,23 @@ In Kotlin, to achieve multi-threading, we use Coroutines, an official Kotlin lib
 
 
 
+### Kotlinx.coroutine and Dependencies
+
+I'd like to take a second and note that Kotlinx.coroutine is an official library, but you do need to add it as a dependency. On the official guide for Gradle, `build.gradle.kts` they tell you that the proper way to add it to dependencies is:
+```
+dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1-Beta")
+}
+```
+
+for me, using the IntelliJ IDE and with Gradle, I found that 
+```
+dependencies {
+    implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.7.3")
+}
+```
+
+worked for me. If you still get a "unreferenced" error for Kotlinx.coroutine after adding and successfully building, just restart the IDE and it should fix that error. 
 ## Implementing Algorithms using Parallel Processing
 
 ### Straussen 
