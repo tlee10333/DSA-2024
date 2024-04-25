@@ -13,7 +13,7 @@ In Kotlin, to achieve multi-threading, we use Coroutines, an official Kotlin lib
 
 ### Kotlinx.coroutine and Dependencies
 
-I'd like to take a second and note that Kotlinx.coroutine is an official library, but you do need to add it as a dependency. On the official guide for Gradle, `build.gradle.kts` they tell you that the proper way to add it to dependencies is:
+I'd like to take a second and note that Kotlinx.coroutine is an official library, you do need to add it as a dependency in your build file to successfully import it. On the official guide for Gradle, `build.gradle.kts` they tell you that the proper way to add it to dependencies is:
 ```
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1-Beta")
