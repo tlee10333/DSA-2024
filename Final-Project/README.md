@@ -32,4 +32,4 @@ The resources I used to guide me were:
 -[An article explaining Kotlin Coroutines](https://betterprogramming.pub/parallelization-in-kotlin-with-coroutines-91f0c77c5a8)
 - [Introduction to Algorithms CLRS 4th Edition](https://dl.ebooksworld.ir/books/Introduction.to.Algorithms.4th.Leiserson.Stein.Rivest.Cormen.MIT.Press.9780262046305.EBooksWorld.ir.pdf)
 -[Official Kotlin Coroutine guide](https://kotlinlang.org/docs/coroutines-basics.html)
-
+-[Kotlinx Coroutine Github Page & README](https://github.com/Kotlin/kotlinx.coroutines/blob/master/README.md#using-in-your-projects)
