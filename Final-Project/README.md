@@ -43,7 +43,7 @@ Below is a benchmark comparing the serial and parallel versions of Mergesort. Th
 
 The results are that 
 
-![mergesort benchmarking](mergesortBenchmarking.jpg)
+![mergesort benchmarking](mergesortBenchmarking.png)
 
 **Fig 1** Shows the benchmarking done for the Mergesort algorithm, comparing it's serial and parallel implementations. Surprisingly, parallel processing does not greatly impact the performance of Mergesort and in fact it's serial projection is more useful until list sizes of around 100000 and above. Overall, the Mergesort algorithm did not greatly benefit from using a parallel processing implementation.  
 
@@ -240,12 +240,12 @@ inline fun <T> measureMemoryBytes(function: () -> T): Pair<T?, Long> {
 Below are the graphed results of the benchmarking.
 
 
-![matrix-time](matrix-time.jpg)
+![matrix-time](matrix-time.png)
 
 **Fig 2** Shows benchmarking done in relation to matrix size and it's affect on the time it takes to do matrix multiplication. For matrices size 1-64, Brute force is the most time efficient, and then afterwards being the Multik library implementation. Overall, the parallel implementation of Strassen's algorithm is the most time efficient out of all of the local implementations at matrix sizes 2048, with brute force being the ideal algorithm for any sizes before 2048. 
 
 
-![matrix-memory](matrix-memory.jpy)
+![matrix-memory](matrix-memory.png)
 
 **Fig 3** Shows benchmarking done in relation to matrix size and the amount of memory usage from the heap for matrix multiplication. Brute force consumes the least amount of memory usage for matrices sized 512 or lower. Afterwards the Multik library is the best method, and Brute Force being the best out of the local implementations. This is reasonable as recursive functions often take more memory in general. Furthermore, you could also posit that the Brute Force method reduces cache misses since it goes row by row, meaning that it would be more efficient in terms of memory usage. 
 
