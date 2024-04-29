@@ -4,6 +4,11 @@ Throughout DSA, majority of the algorithms are by nature, serial algorithms. My 
 
 The Fork-Join Parallel Model is a style of programming where the code is designed so that you split up many minor tasks to be done in parallel (hence forked), and then eventually merge them back together (hence joined). This trait is often inherent in recursive and divide and conquer algorithms, as you could fork parallel sections recursively or the subsections in a divide and concquer algorithm. When designing a fork-join parallel model, it should be almost identical in structure to it's serial counterpart, which we call the "serial projection".
 
+Below is a quick visual diagram explaining how fork-join models work:
+
+
+![fork-join diagram](forkjoin-model.png)
+
 For this project, I examine the impact of parallel processing on two algorithms we've learned in this course so far: the Mergesort Algorithm and Matrix Multiplication (specifically Strassen's Algorithm).
 
 ## Parallel Processing and in Kotlin (Coroutines)
@@ -33,6 +38,7 @@ The official resources are extremely comprehensive and have been linked in the b
 
 The first algorithm we can refactor to utilize parallel processing is Mergesort. Earlier in the course we learned about how to mergesort works as a divide and conquer algorithm. Mergesort is relatively easy to refactor to be parallel, and after that I compared it to the serial version during benchmarking. My specific implementation of mergesort is recursive for both its serial and parallel implementation. 
 
+![mergesort model](mergesort-model.png)
 
 Again, during my implementation, one thing I discovered is that for Mergesort it matters that you use coroutineScope rather than runBlocking. RunBlocking effectively blocks threads until the thread is done, while coroutineScope is a more free for all. 
 
@@ -54,6 +60,10 @@ For this project, I decided to go a little deeper than just implement Strassen's
 
 
 First, I refactored the serial version of Strassen's algorithm to use coroutines. Next, I also implemented a method that uses Multik's 2D arrays and dot function instead of my Matrix object and mutliplication functions. All of these different implementations can be found in the `matrix-multiplication-basic.kt` file.
+
+Below is a diagram for my fork join model for strassen's algorithm:
+
+![forkjoin strassen](matrix-model.png)
 
 Below is the Strassen Parallel Implementation function:
 
